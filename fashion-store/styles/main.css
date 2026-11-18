@@ -1,0 +1,271 @@
+/* ==========================================================================
+   ÉLÉVATION ATELIER - LUXURY FASHION STYLESHEET
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-noir: #121212;
+  --color-charcoal: #2A2A2A;
+  --color-muted: #6B7280;
+  --color-alabaster: #FBF9F5;
+  --color-sand: #F3EFE6;
+  --color-border: #EAE6DF;
+  --color-gold: #C5A880;
+  --color-gold-dark: #A88A60;
+  --color-emerald: #1B4D3E;
+  
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --shadow-luxury: 0 20px 40px -15px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-alabaster);
+  color: var(--color-noir);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography Helpers */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, .heading-serif {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-sand);
+}
+::-webkit-scrollbar-thumb {
+  background: #D1C9BC;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* Glassmorphism Header */
+.header-glass {
+  background: rgba(251, 249, 245, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(234, 230, 223, 0.8);
+}
+
+/* Luxury Product Card Hover Effects */
+.product-card {
+  transition: transform 0.4s var(--ease-luxury), box-shadow 0.4s var(--ease-luxury);
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-luxury);
+}
+
+.product-img-wrapper {
+  overflow: hidden;
+  position: relative;
+  background-color: #EFECE6;
+}
+
+.product-img-primary, .product-img-secondary {
+  transition: transform 0.8s var(--ease-luxury), opacity 0.5s ease;
+}
+
+.product-card:hover .product-img-primary {
+  transform: scale(1.04);
+}
+
+.product-card:hover .product-img-secondary {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+/* Drawer Transitions */
+.drawer-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.drawer-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer-panel {
+  transform: translateX(100%);
+  transition: transform 0.4s var(--ease-luxury);
+}
+.drawer-backdrop.active .drawer-panel {
+  transform: translateX(0);
+}
+
+/* Modal Transitions */
+.modal-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.4s var(--ease-luxury), opacity 0.4s ease;
+}
+.modal-backdrop.active .modal-content {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Gold Accent Buttons */
+.btn-gold {
+  background-color: var(--color-noir);
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  background-color: var(--color-gold);
+  color: #121212;
+}
+
+.btn-outline-gold {
+  border: 1px solid var(--color-gold);
+  color: var(--color-noir);
+  transition: all 0.3s ease;
+}
+.btn-outline-gold:hover {
+  background-color: var(--color-gold);
+  color: #FFFFFF;
+}
+
+/* Color Swatch Dot */
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.color-swatch:hover {
+  transform: scale(1.15);
+}
+.color-swatch.active {
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px var(--color-noir);
+}
+
+/* Free Shipping Progress Bar */
+.shipping-progress {
+  height: 6px;
+  border-radius: 3px;
+  background-color: #EAE6DF;
+  overflow: hidden;
+}
+.shipping-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-gold), #D4AF37);
+  transition: width 0.5s var(--ease-luxury);
+}
+
+/* Toast Notifications */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+  min-width: 300px;
+  max-width: 420px;
+  background: #FFFFFF;
+  color: var(--color-noir);
+  border-left: 4px solid var(--color-gold);
+  box-shadow: var(--shadow-luxury);
+  border-radius: 4px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s var(--ease-luxury), opacity 0.3s ease;
+}
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Lookbook Parallax Image */
+.editorial-parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Badge Styles */
+.badge-luxury {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+/* Print styling for Checkout Invoice */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #invoice-print-area, #invoice-print-area * {
+    visibility: visible;
+  }
+  #invoice-print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: #FFFFFF !important;
+  }
+}

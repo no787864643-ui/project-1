@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ÉLÉVATION ATELIER | Contemporary Luxury & Timeless Apparel</title>
+  <meta name="description" content="Curated luxury fashion, artisan tailoring, and timeless apparel crafted from pure Italian cashmere and Mulberry silk." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            noir: '#121212',
+            charcoal: '#262626',
+            alabaster: '#FBF9F5',
+            sand: '#F3EFE6',
+            gold: '#C5A880',
+            'gold-dark': '#A88A60'
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body class="bg-[#FBF9F5] text-[#121212] antialiased flex flex-col min-h-screen">
+
+  <!-- ==================== TOP ANNOUNCEMENT BAR ==================== -->
+  <aside aria-label="Store Announcement" class="bg-[#121212] text-[#FBF9F5] py-2 px-4 text-xs tracking-wider uppercase text-center transition-opacity duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+      <span id="announcement-text" class="transition-opacity duration-300 font-medium">
+        ✨ Complimentary Global Express Delivery on orders over $150
+      </span>
+    </div>
+  </aside>
+
+  <!-- ==================== STICKY HEADER ==================== -->
+  <header class="header-glass sticky top-0 z-40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Mobile Menu Trigger -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-black hover:text-[#C5A880] focus:outline-none" aria-label="Open Mobile Menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Desktop Nav Links Left -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-[#121212]" aria-label="Main Navigation">
+        <a href="#catalog" class="hover:text-[#C5A880] transition-colors" onclick="document.querySelector('[data-category=all]').click()">Collections</a>
+        <a href="#catalog" class="hover:text-[#C5A880] transition-colors" onclick="document.querySelector('[data-category=women]').click()">Women</a>
+        <a href="#catalog" class="hover:text-[#C5A880] transition-colors" onclick="document.querySelector('[data-category=men]').click()">Men</a>
+        <a href="#catalog" class="hover:text-[#C5A880] transition-colors" onclick="document.querySelector('[data-category=outerwear]').click()">Outerwear</a>
+        <a href="#catalog" class="hover:text-[#C5A880] transition-colors" onclick="document.querySelector('[data-category=accessories]').click()">Accessories</a>
+      </nav>
+
+      <!-- Brand Logo / Title -->
+      <div class="text-center flex-1 lg:flex-initial">
+        <a href="#" class="inline-block group">
+          <h1 class="font-serif text-2xl sm:text-3xl tracking-widest font-semibold uppercase text-[#121212] group-hover:text-[#C5A880] transition-colors">
+            ÉLÉVATION
+          </h1>
+          <span class="block text-[9px] tracking-[0.3em] uppercase text-gray-500 font-sans -mt-1">
+            ATELIER PARIS • NEW YORK
+          </span>
+        </a>
+      </div>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-3 sm:gap-5">
+        
+        <!-- Currency Selector -->
+        <div class="hidden sm:flex items-center text-xs font-medium text-gray-700">
+          <select id="currency-select" class="bg-transparent border-none text-xs font-semibold uppercase tracking-wider text-black focus:outline-none cursor-pointer">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="INR">INR (₹)</option>
+          </select>
+        </div>
+
+        <!-- Wishlist Trigger -->
+        <button data-wishlist-open class="relative p-2 text-black hover:text-[#C5A880] transition-colors" title="View Wishlist" aria-label="Wishlist">
+          <i data-lucide="heart" class="w-5 h-5"></i>
+          <span class="wishlist-count-badge hidden absolute -top-1 -right-1 w-4 h-4 bg-[#C5A880] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+            0
+          </span>
+        </button>
+
+        <!-- Shopping Bag Trigger -->
+        <button data-cart-open class="relative p-2 text-black hover:text-[#C5A880] transition-colors flex items-center gap-1.5" title="View Bag" aria-label="Shopping Bag">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span class="cart-count-badge hidden absolute -top-1 -right-1 w-4 h-4 bg-[#121212] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+            0
+          </span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="relative min-h-[85vh] flex items-center justify-center text-center overflow-hidden bg-[#121212]">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2000&auto=format&fit=crop" 
+        alt="Élévation Atelier Autumn Runway" 
+        class="w-full h-full object-cover object-center opacity-40 scale-105 transform animate-pulse duration-[10000ms]"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-black/40"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 py-20 text-white">
+      <span class="inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#C5A880] mb-4">
+        Autumn / Winter 2024 Collection
+      </span>
+      <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-[#FBF9F5] leading-tight mb-6">
+        Curated Elegance <br class="hidden sm:block" /> For The Discerning
+      </h2>
+      <p class="max-w-xl mx-auto text-sm sm:text-base text-gray-300 font-light mb-10 leading-relaxed">
+        Sculptural tailoring, Mongolian double-faced cashmere, and pure Mulberry silk. Handcrafted in limited editions by heritage European ateliers.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#catalog" class="w-full sm:w-auto px-8 py-3.5 bg-[#FBF9F5] text-[#121212] font-semibold text-xs uppercase tracking-widest hover:bg-[#C5A880] hover:text-white transition-all shadow-lg rounded">
+          Discover The Collection
+        </a>
+        <a href="#editorial-lookbook" class="w-full sm:w-auto px-8 py-3.5 border border-[#FBF9F5]/40 text-[#FBF9F5] font-semibold text-xs uppercase tracking-widest hover:border-white hover:bg-white/10 transition-all rounded">
+          View Runway Lookbook
+        </a>
+      </div>
+
+      <!-- Trust Metrics -->
+      <div class="mt-16 pt-8 border-t border-white/15 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="font-serif text-2xl font-semibold text-[#C5A880]">100%</span>
+          <p class="text-[11px] text-gray-300 uppercase tracking-wider mt-1">Certified Organic Silk</p>
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-semibold text-[#C5A880]">Limited</span>
+          <p class="text-[11px] text-gray-300 uppercase tracking-wider mt-1">Small Batch Atelier</p>
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-semibold text-[#C5A880]">Express</span>
+          <p class="text-[11px] text-gray-300 uppercase tracking-wider mt-1">Worldwide White Glove</p>
+        </div>
+        <div>
+          <span class="font-serif text-2xl font-semibold text-[#C5A880]">4.9 / 5</span>
+          <p class="text-[11px] text-gray-300 uppercase tracking-wider mt-1">Verified Atelier Reviews</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BRAND PILLARS ==================== -->
+  <section class="py-12 bg-[#F3EFE6] border-y border-[#EAE6DF]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-white rounded shadow-sm text-[#C5A880]">
+            <i data-lucide="gem" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-sm text-[#121212] tracking-wide">Artisanal Craftsmanship</h4>
+            <p class="text-xs text-gray-600 mt-1">Meticulously handcrafted in limited batches by European masters.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-white rounded shadow-sm text-[#C5A880]">
+            <i data-lucide="leaf" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-sm text-[#121212] tracking-wide">Sustainable & Ethical</h4>
+            <p class="text-xs text-gray-600 mt-1">Eco-certified organic silks, virgin wools, zero plastic packaging.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-white rounded shadow-sm text-[#C5A880]">
+            <i data-lucide="truck" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-sm text-[#121212] tracking-wide">White Glove Delivery</h4>
+            <p class="text-xs text-gray-600 mt-1">Complimentary worldwide insured shipping on orders over $150.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="p-3 bg-white rounded shadow-sm text-[#C5A880]">
+            <i data-lucide="rotate-ccw" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-sm text-[#121212] tracking-wide">30-Day Doorstep Returns</h4>
+            <p class="text-xs text-gray-600 mt-1">Effortless courier pick-up directly from your residence or office.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CATEGORY SPOTLIGHTS ==================== -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-semibold">Seasonal Focus</span>
+      <h2 class="font-serif text-3xl sm:text-4xl mt-1 text-[#121212]">Curated Departments</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Women -->
+      <a href="#catalog" onclick="document.querySelector('[data-category=women]').click()" class="group relative aspect-[3/4] overflow-hidden rounded bg-[#121212]">
+        <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=800&auto=format&fit=crop" alt="Women's Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+          <span class="text-[10px] tracking-widest uppercase text-[#C5A880]">Department</span>
+          <h3 class="font-serif text-2xl">Women's Couture</h3>
+          <span class="text-xs text-gray-300 mt-1 flex items-center gap-1 group-hover:translate-x-1 transition-transform">Explore &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Men -->
+      <a href="#catalog" onclick="document.querySelector('[data-category=men]').click()" class="group relative aspect-[3/4] overflow-hidden rounded bg-[#121212]">
+        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop" alt="Men's Tailoring" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+          <span class="text-[10px] tracking-widest uppercase text-[#C5A880]">Department</span>
+          <h3 class="font-serif text-2xl">Men's Tailoring</h3>
+          <span class="text-xs text-gray-300 mt-1 flex items-center gap-1 group-hover:translate-x-1 transition-transform">Explore &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Outerwear -->
+      <a href="#catalog" onclick="document.querySelector('[data-category=outerwear]').click()" class="group relative aspect-[3/4] overflow-hidden rounded bg-[#121212]">
+        <img src="https://images.unsplash.com/photo-1539533018447-63fcce667883?q=80&w=800&auto=format&fit=crop" alt="Outerwear & Knitwear" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+          <span class="text-[10px] tracking-widest uppercase text-[#C5A880]">Department</span>
+          <h3 class="font-serif text-2xl">Cashmere & Coats</h3>
+          <span class="text-xs text-gray-300 mt-1 flex items-center gap-1 group-hover:translate-x-1 transition-transform">Explore &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Accessories -->
+      <a href="#catalog" onclick="document.querySelector('[data-category=accessories]').click()" class="group relative aspect-[3/4] overflow-hidden rounded bg-[#121212]">
+        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop" alt="Leathergoods & Accessories" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+          <span class="text-[10px] tracking-widest uppercase text-[#C5A880]">Department</span>
+          <h3 class="font-serif text-2xl">Fine Leathergoods</h3>
+          <span class="text-xs text-gray-300 mt-1 flex items-center gap-1 group-hover:translate-x-1 transition-transform">Explore &rarr;</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ==================== PRODUCT CATALOG SECTION ==================== -->
+  <section id="catalog" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="border-t border-[#EAE6DF] pt-12">
+      
+      <!-- Catalog Header & Live Search Bar -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <span class="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-semibold">Storefront</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-[#121212] mt-1">The Atelier Collection</h2>
+          <p id="products-count" class="text-xs text-gray-500 mt-1">Loading creations...</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full md:w-80">
+          <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            placeholder="Search coat, silk, blazer..." 
+            class="store-search-input w-full pl-10 pr-4 py-2.5 text-xs bg-white border border-[#EAE6DF] rounded focus:outline-none focus:border-black transition-colors"
+          />
+        </div>
+      </div>
+
+      <!-- Filters & Sorting Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#EAE6DF]">
+        <!-- Category Filter Pills -->
+        <div class="flex flex-wrap gap-2">
+          <button data-category="all" class="category-filter-btn px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded transition-all bg-[#121212] text-white">
+            All Creations
+          </button>
+          <button data-category="women" class="category-filter-btn px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded transition-all bg-white text-black border border-[#EAE6DF] hover:border-black">
+            Women
+          </button>
+          <button data-category="men" class="category-filter-btn px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded transition-all bg-white text-black border border-[#EAE6DF] hover:border-black">
+            Men
+          </button>
+          <button data-category="outerwear" class="category-filter-btn px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded transition-all bg-white text-black border border-[#EAE6DF] hover:border-black">
+            Outerwear
+          </button>
+          <button data-category="accessories" class="category-filter-btn px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded transition-all bg-white text-black border border-[#EAE6DF] hover:border-black">
+            Accessories
+          </button>
+          <button data-category="bestseller" class="category-filter-btn px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded transition-all bg-white text-black border border-[#EAE6DF] hover:border-black">
+            Bestsellers
+          </button>
+          <button data-category="sale" class="category-filter-btn px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded transition-all bg-white text-black border border-[#EAE6DF] hover:border-black">
+            Seasonal Sale
+          </button>
+        </div>
+
+        <!-- Sorting Select -->
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-gray-500 font-medium">Sort by:</span>
+          <select id="sort-select" class="bg-white border border-[#EAE6DF] px-3 py-2 rounded text-xs font-semibold text-black focus:outline-none focus:border-black cursor-pointer">
+            <option value="featured">Curator's Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products Grid Container -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== EDITORIAL LOOKBOOK BANNER ==================== -->
+  <section id="editorial-lookbook" class="py-24 my-12 relative overflow-hidden bg-[#1C1C1C] text-white">
+    <div class="absolute inset-0 z-0 opacity-30">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop" alt="Lookbook Runway" class="w-full h-full object-cover" />
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+      <span class="text-xs font-semibold uppercase tracking-[0.3em] text-[#C5A880] mb-3 inline-block">
+        The Atelier Philosophy
+      </span>
+      <blockquote class="font-serif text-3xl sm:text-5xl font-light italic leading-relaxed text-[#FBF9F5] mb-6">
+        “Fashion is architecture: it is a matter of proportions.”
+      </blockquote>
+      <p class="text-xs uppercase tracking-widest text-gray-400">
+        Coco Chanel — Reimagined by ÉLÉVATION ATELIER
+      </p>
+      <div class="mt-8">
+        <a href="#catalog" class="inline-block px-8 py-3 bg-[#C5A880] text-black font-semibold text-xs uppercase tracking-widest hover:bg-white transition-all rounded">
+          Explore Current Season
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== REVIEWS / SOCIAL PROOF ==================== -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-semibold">Atelier Testimonials</span>
+      <h2 class="font-serif text-3xl sm:text-4xl mt-1 text-[#121212]">Acclaimed by Discerning Clients</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <div class="p-8 bg-white border border-[#EAE6DF] rounded shadow-subtle flex flex-col justify-between">
+        <div>
+          <div class="flex text-amber-500 gap-1 mb-4">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <p class="text-sm text-gray-700 italic leading-relaxed mb-6">
+            “The Florence Cashmere Wrap Coat is unequivocally the finest piece in my wardrobe. The drape is breathtaking, and the unboxing experience felt like a private atelier salon in Paris.”
+          </p>
+        </div>
+        <div>
+          <h5 class="font-semibold text-sm text-[#121212]">Lady Vivienne M.</h5>
+          <span class="text-xs text-gray-400">Verified Client • London, UK</span>
+        </div>
+      </div>
+
+      <div class="p-8 bg-white border border-[#EAE6DF] rounded shadow-subtle flex flex-col justify-between">
+        <div>
+          <div class="flex text-amber-500 gap-1 mb-4">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <p class="text-sm text-gray-700 italic leading-relaxed mb-6">
+            “Tailoring of this caliber usually requires three bespoke fittings on Savile Row. The Monaco Double-Breasted blazer fit impeccably straight from the garment box.”
+          </p>
+        </div>
+        <div>
+          <h5 class="font-semibold text-sm text-[#121212]">Marcus Sterling</h5>
+          <span class="text-xs text-gray-400">Verified Client • Manhattan, NY</span>
+        </div>
+      </div>
+
+      <div class="p-8 bg-white border border-[#EAE6DF] rounded shadow-subtle flex flex-col justify-between">
+        <div>
+          <div class="flex text-amber-500 gap-1 mb-4">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <p class="text-sm text-gray-700 italic leading-relaxed mb-6">
+            “The silk slip gown feels like liquid moonlight on the skin. Exceptional attention to seams and hem weighting. I received compliments throughout the entire gala.”
+          </p>
+        </div>
+        <div>
+          <h5 class="font-semibold text-sm text-[#121212]">Elena Rostova</h5>
+          <span class="text-xs text-gray-400">Verified Client • Milan, IT</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== NEWSLETTER VIP ==================== -->
+  <section class="py-16 bg-[#F3EFE6] border-t border-[#EAE6DF]">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[#C5A880]">Private Atelier Access</span>
+      <h2 class="font-serif text-3xl sm:text-4xl text-[#121212] mt-1 mb-3">Join The ÉLÉVATION Circle</h2>
+      <p class="text-sm text-gray-600 mb-8 max-w-md mx-auto">
+        Receive privileged invitations to private runway previews, small-batch releases, and enjoy <strong>20% off</strong> your inaugural order.
+      </p>
+
+      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input 
+          type="email" 
+          id="newsletter-email" 
+          placeholder="Enter your email address..." 
+          required 
+          class="flex-1 px-4 py-3 text-xs bg-white border border-[#EAE6DF] rounded focus:outline-none focus:border-black"
+        />
+        <button type="submit" class="px-6 py-3 bg-[#121212] text-white text-xs font-semibold uppercase tracking-widest hover:bg-[#C5A880] transition-colors rounded">
+          Subscribe
+        </button>
+      </form>
+      <p class="text-[11px] text-gray-400 mt-3">We respect your discretion. Unsubscribe with a single click anytime.</p>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#121212] text-white pt-16 pb-12 mt-auto border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Brand Summary -->
+        <div class="md:col-span-2">
+          <h3 class="font-serif text-2xl tracking-widest font-semibold uppercase text-white mb-2">ÉLÉVATION</h3>
+          <span class="block text-[10px] tracking-[0.3em] uppercase text-[#C5A880] mb-4">ATELIER CONTEMPORAIN</span>
+          <p class="text-xs text-gray-400 leading-relaxed max-w-sm mb-6">
+            Dedicated to the pursuit of enduring style, architectural purity, and responsible European craftsmanship. Every silhouette is cut in strictly limited editions.
+          </p>
+          <div class="flex items-center gap-4 text-gray-400">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A880] transition-colors" aria-label="Instagram">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A880] transition-colors" aria-label="Pinterest">
+              <i data-lucide="camera" class="w-5 h-5"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C5A880] transition-colors" aria-label="Twitter">
+              <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Collections Links -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Collections</h4>
+          <ul class="space-y-2.5 text-xs text-gray-400">
+            <li><a href="#catalog" onclick="document.querySelector('[data-category=women]').click()" class="hover:text-white transition-colors">Women's Couture</a></li>
+            <li><a href="#catalog" onclick="document.querySelector('[data-category=men]').click()" class="hover:text-white transition-colors">Men's Tailoring</a></li>
+            <li><a href="#catalog" onclick="document.querySelector('[data-category=outerwear]').click()" class="hover:text-white transition-colors">Cashmere & Outerwear</a></li>
+            <li><a href="#catalog" onclick="document.querySelector('[data-category=accessories]').click()" class="hover:text-white transition-colors">Artisanal Leather</a></li>
+            <li><a href="#catalog" onclick="document.querySelector('[data-category=bestseller]').click()" class="hover:text-white transition-colors">Bestsellers</a></li>
+          </ul>
+        </div>
+
+        <!-- Concierge Services -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Concierge</h4>
+          <ul class="space-y-2.5 text-xs text-gray-400">
+            <li><a href="#" onclick="window.showToast('Complimentary worldwide delivery on orders over $150', 'info'); return false;" class="hover:text-white transition-colors">Shipping & Delivery</a></li>
+            <li><a href="#" onclick="window.showToast('Complimentary 30-day doorstep return service', 'info'); return false;" class="hover:text-white transition-colors">Returns & Exchanges</a></li>
+            <li><a href="#" onclick="window.showToast('Atelier Sizing: True to European tailor measurements', 'info'); return false;" class="hover:text-white transition-colors">Bespoke Size Guide</a></li>
+            <li><a href="#" onclick="window.showToast('Atelier Concierge Hotline: +1 (800) 845-8930', 'info'); return false;" class="hover:text-white transition-colors">Book Private Fitting</a></li>
+          </ul>
+        </div>
+
+        <!-- Atelier House -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">The Atelier</h4>
+          <ul class="space-y-2.5 text-xs text-gray-400">
+            <li>740 Fifth Avenue, Suite 1400</li>
+            <li>New York, NY 10019</li>
+            <li class="pt-2 text-white font-medium">concierge@elevation-atelier.com</li>
+            <li>Mon – Sat: 10:00 – 19:00 EST</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <p>&copy; 2024 ÉLÉVATION ATELIER. All Rights Reserved. Built for client showcase.</p>
+        <div class="flex items-center gap-6">
+          <span class="hover:text-gray-400 cursor-pointer">Privacy Policy</span>
+          <span class="hover:text-gray-400 cursor-pointer">Terms of Service</span>
+          <span class="hover:text-gray-400 cursor-pointer">Accessibility</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SHOPPING CART DRAWER ==================== -->
+  <div id="cart-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex justify-end">
+    <div class="drawer-panel w-full max-w-md bg-white h-full flex flex-col shadow-2xl">
+      
+      <!-- Cart Drawer Header -->
+      <div class="p-6 border-b border-[#EAE6DF] flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <h3 class="font-serif text-2xl font-normal text-[#121212]">Your Shopping Bag</h3>
+          <span class="cart-count-badge hidden bg-[#121212] text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+        </div>
+        <button data-cart-close class="p-2 text-gray-500 hover:text-black transition-colors" aria-label="Close Bag">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Free Shipping Progress Tracker -->
+      <div class="px-6 py-3.5 bg-[#FAF9F5] border-b border-[#EAE6DF]">
+        <p id="cart-shipping-text" class="text-xs text-gray-700 mb-2">Calculating shipping privileges...</p>
+        <div class="shipping-progress">
+          <div id="cart-shipping-bar" class="shipping-progress-bar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Items Container -->
+      <div class="flex-1 overflow-y-auto px-6 divide-y divide-[#EAE6DF]">
+        <div id="cart-items-container"></div>
+        
+        <!-- Empty State -->
+        <div id="cart-empty-state" class="py-20 text-center">
+          <div class="w-16 h-16 mx-auto mb-4 text-gray-300 flex items-center justify-center bg-[#FAF9F5] rounded-full">
+            <i data-lucide="shopping-bag" class="w-8 h-8"></i>
+          </div>
+          <h4 class="font-serif text-xl text-[#121212] mb-1">Your bag is currently empty</h4>
+          <p class="text-xs text-gray-500 max-w-xs mx-auto mb-6">Discover our curated collection of luxury apparel and artisanal tailoring.</p>
+          <button data-cart-close class="px-6 py-2.5 bg-[#121212] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#C5A880] transition-colors rounded">
+            Explore Creations
+          </button>
+        </div>
+      </div>
+
+      <!-- Cart Drawer Footer -->
+      <div id="cart-footer" class="p-6 border-t border-[#EAE6DF] bg-[#FAF9F5] space-y-4">
+        
+        <!-- Promo Code Input -->
+        <form id="cart-coupon-form" class="flex gap-2">
+          <input 
+            type="text" 
+            id="cart-coupon-input" 
+            placeholder="Privilege Code (try ELEVATE20)" 
+            class="flex-1 px-3 py-2 text-xs uppercase bg-white border border-[#EAE6DF] rounded focus:outline-none focus:border-black"
+          />
+          <button type="submit" class="px-4 py-2 bg-[#121212] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#C5A880] transition-colors rounded">
+            Apply
+          </button>
+        </form>
+
+        <!-- Subtotal / Discount / Total -->
+        <div class="space-y-1.5 text-xs">
+          <div class="flex justify-between text-gray-600">
+            <span>Subtotal</span>
+            <span id="cart-subtotal" class="font-semibold text-black">$0.00</span>
+          </div>
+          
+          <div id="cart-discount-row" class="hidden flex justify-between text-emerald-700">
+            <span class="flex items-center gap-1">Privilege Discount <span id="cart-discount-badge" class="bg-emerald-100 text-[10px] px-1.5 py-0.5 rounded"></span></span>
+            <span id="cart-discount-val" class="font-semibold">-$0.00</span>
+          </div>
+
+          <div class="flex justify-between text-gray-600">
+            <span>Estimated Shipping</span>
+            <span id="cart-shipping-val" class="font-semibold text-black">Calculated next</span>
+          </div>
+
+          <div class="flex justify-between text-base font-semibold text-black pt-2 border-t border-[#EAE6DF]">
+            <span>Estimated Total</span>
+            <span id="cart-total-val">$0.00</span>
+          </div>
+        </div>
+
+        <!-- Checkout Trigger Button -->
+        <button data-checkout-start class="w-full py-3.5 bg-[#121212] text-white text-xs font-semibold uppercase tracking-widest hover:bg-[#C5A880] transition-all shadow-md rounded flex items-center justify-center gap-2">
+          <span>Proceed To Checkout</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== WISHLIST DRAWER ==================== -->
+  <div id="wishlist-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex justify-end">
+    <div class="drawer-panel w-full max-w-md bg-white h-full flex flex-col shadow-2xl">
+      <div class="p-6 border-b border-[#EAE6DF] flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <h3 class="font-serif text-2xl font-normal text-[#121212]">Saved Creations</h3>
+          <span class="wishlist-count-badge hidden bg-[#C5A880] text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+        </div>
+        <button data-wishlist-close class="p-2 text-gray-500 hover:text-black transition-colors" aria-label="Close Wishlist">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto px-6">
+        <div id="wishlist-items-container"></div>
+        <div id="wishlist-empty-state" class="py-20 text-center">
+          <div class="w-16 h-16 mx-auto mb-4 text-gray-300 flex items-center justify-center bg-[#FAF9F5] rounded-full">
+            <i data-lucide="heart" class="w-8 h-8"></i>
+          </div>
+          <h4 class="font-serif text-xl text-[#121212] mb-1">Your wishlist is empty</h4>
+          <p class="text-xs text-gray-500 max-w-xs mx-auto mb-6">Tap the heart icon on any piece to save it for your private consideration.</p>
+          <button data-wishlist-close class="px-6 py-2.5 bg-[#121212] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#C5A880] transition-colors rounded">
+            Browse Collection
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== QUICK VIEW MODAL ==================== -->
+  <div id="quickview-modal" class="modal-backdrop fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="modal-content relative bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl flex flex-col md:flex-row">
+      
+      <!-- Close button -->
+      <button data-quickview-close class="absolute top-4 right-4 z-20 p-2 text-gray-500 hover:text-black transition-colors bg-white/80 rounded-full" aria-label="Close Quick View">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Left: Image Gallery -->
+      <div class="w-full md:w-1/2 p-6 bg-[#FAF9F5] flex flex-col justify-between">
+        <div class="aspect-[3/4] rounded overflow-hidden bg-white shadow-sm mb-4">
+          <img id="qv-main-image" src="" alt="Product View" class="w-full h-full object-cover object-center" />
+        </div>
+        <!-- Thumbnails -->
+        <div id="qv-thumbnails" class="flex gap-2"></div>
+      </div>
+
+      <!-- Right: Product Details & Controls -->
+      <div class="w-full md:w-1/2 p-8 flex flex-col justify-between space-y-6">
+        <div>
+          <span id="qv-category" class="text-xs uppercase tracking-widest text-[#C5A880] font-semibold"></span>
+          <h3 id="qv-title" class="font-serif text-2xl sm:text-3xl font-medium text-[#121212] mt-1 mb-2"></h3>
+          
+          <div class="flex items-center gap-3 mb-4">
+            <span id="qv-price" class="text-xl font-bold text-[#121212]"></span>
+            <span id="qv-original-price" class="text-sm text-gray-400 line-through"></span>
+          </div>
+
+          <p id="qv-description" class="text-xs text-gray-600 leading-relaxed mb-6"></p>
+
+          <!-- Color Swatches -->
+          <div class="mb-5">
+            <label class="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">
+              Color: <span id="qv-color-label" class="text-black font-bold"></span>
+            </label>
+            <div id="qv-colors-container" class="flex items-center gap-2"></div>
+          </div>
+
+          <!-- Size Selector -->
+          <div class="mb-5">
+            <label class="block text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">
+              Select Size
+            </label>
+            <div id="qv-sizes-container" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <!-- Stock alert -->
+          <div id="qv-stock" class="text-xs mb-6"></div>
+
+          <!-- Quantity and Add to Bag -->
+          <div class="flex items-center gap-4 pt-4 border-t border-[#EAE6DF]">
+            <div class="flex items-center border border-[#EAE6DF] rounded">
+              <button onclick="window.quickViewManager.adjustQuantity(-1)" class="w-9 h-10 flex items-center justify-center text-sm font-semibold hover:bg-gray-100">−</button>
+              <span id="qv-qty-val" class="w-10 text-center text-xs font-bold">1</span>
+              <button onclick="window.quickViewManager.adjustQuantity(1)" class="w-9 h-10 flex items-center justify-center text-sm font-semibold hover:bg-gray-100">+</button>
+            </div>
+            
+            <button onclick="window.quickViewManager.addToBag()" class="flex-1 py-3 bg-[#121212] text-white text-xs font-semibold uppercase tracking-widest hover:bg-[#C5A880] transition-colors rounded shadow-md">
+              Add To Bag
+            </button>
+          </div>
+        </div>
+
+        <!-- Fabric & Care Notice -->
+        <div class="pt-4 border-t border-[#EAE6DF] text-xs text-gray-500">
+          <strong>Composition & Care:</strong> <span id="qv-fabric"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== CHECKOUT MODAL ==================== -->
+  <div id="checkout-modal" class="modal-backdrop fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="modal-content relative bg-white w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-lg shadow-2xl p-6 sm:p-10">
+      
+      <!-- Close Button -->
+      <button data-checkout-close class="absolute top-5 right-5 text-gray-400 hover:text-black" aria-label="Close Checkout">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <div class="text-center mb-8">
+        <span class="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-semibold">Atelier Secure Checkout</span>
+        <h2 class="font-serif text-3xl text-[#121212] mt-1">Complete Your Order</h2>
+      </div>
+
+      <form id="checkout-form" class="space-y-8">
+        
+        <!-- Step 1: Customer & Shipping Address -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-widest text-black border-b border-[#EAE6DF] pb-2 mb-4">
+            1. Shipping Address
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label class="block text-gray-600 mb-1">First Name *</label>
+              <input type="text" id="checkout-firstname" required placeholder="Alexander" class="w-full px-3 py-2.5 border border-[#EAE6DF] rounded focus:outline-none focus:border-black" />
+            </div>
+            <div>
+              <label class="block text-gray-600 mb-1">Last Name *</label>
+              <input type="text" id="checkout-lastname" required placeholder="Vanderbilt" class="w-full px-3 py-2.5 border border-[#EAE6DF] rounded focus:outline-none focus:border-black" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-gray-600 mb-1">Email Address (For Tracking & Invoice) *</label>
+              <input type="email" id="checkout-email" required placeholder="alexander@example.com" class="w-full px-3 py-2.5 border border-[#EAE6DF] rounded focus:outline-none focus:border-black" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-gray-600 mb-1">Street Address *</label>
+              <input type="text" id="checkout-address" required placeholder="742 Evergreen Terrace, Apt 4B" class="w-full px-3 py-2.5 border border-[#EAE6DF] rounded focus:outline-none focus:border-black" />
+            </div>
+            <div>
+              <label class="block text-gray-600 mb-1">City *</label>
+              <input type="text" id="checkout-city" required placeholder="New York" class="w-full px-3 py-2.5 border border-[#EAE6DF] rounded focus:outline-none focus:border-black" />
+            </div>
+            <div>
+              <label class="block text-gray-600 mb-1">Postal Code *</label>
+              <input type="text" id="checkout-zip" required placeholder="10001" class="w-full px-3 py-2.5 border border-[#EAE6DF] rounded focus:outline-none focus:border-black" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-gray-600 mb-1">Country *</label>
+              <select id="checkout-country" class="w-full px-3 py-2.5 border border-[#EAE6DF] rounded focus:outline-none focus:border-black bg-white">
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Italy">Italy</option>
+                <option value="India">India</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Shipping Method -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-widest text-black border-b border-[#EAE6DF] pb-2 mb-4">
+            2. Delivery Method
+          </h4>
+          <div class="space-y-3 text-xs">
+            <label class="flex items-center justify-between p-3.5 border border-[#EAE6DF] rounded cursor-pointer hover:border-black transition-colors">
+              <div class="flex items-center gap-3">
+                <input type="radio" name="checkout_shipping" value="standard" checked class="text-black focus:ring-0" />
+                <div>
+                  <span class="font-semibold block text-black">Complimentary Standard Delivery</span>
+                  <span class="text-gray-500">Delivered in 3 to 5 business days with unboxing box</span>
+                </div>
+              </div>
+              <span class="font-bold text-[#121212]">Complimentary</span>
+            </label>
+
+            <label class="flex items-center justify-between p-3.5 border border-[#EAE6DF] rounded cursor-pointer hover:border-black transition-colors">
+              <div class="flex items-center gap-3">
+                <input type="radio" name="checkout_shipping" value="express" class="text-black focus:ring-0" />
+                <div>
+                  <span class="font-semibold block text-black">Priority Express Air Courier</span>
+                  <span class="text-gray-500">Delivered within 24 to 48 hours via dedicated air courier</span>
+                </div>
+              </div>
+              <span class="font-bold text-[#121212]">+$30.00</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 3: Payment Method -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-widest text-black border-b border-[#EAE6DF] pb-2 mb-4">
+            3. Payment Method
+          </h4>
+          <div class="grid grid-cols-3 gap-3 mb-4 text-xs">
+            <label class="p-3 border border-gray-300 rounded text-center cursor-pointer hover:border-black transition-colors block">
+              <input type="radio" name="checkout_payment" value="card" checked class="mb-1" />
+              <span class="block font-medium">Credit / Debit Card</span>
+            </label>
+            <label class="p-3 border border-gray-300 rounded text-center cursor-pointer hover:border-black transition-colors block">
+              <input type="radio" name="checkout_payment" value="upi" class="mb-1" />
+              <span class="block font-medium">UPI / Net Banking</span>
+            </label>
+            <label class="p-3 border border-gray-300 rounded text-center cursor-pointer hover:border-black transition-colors block">
+              <input type="radio" name="checkout_payment" value="cod" class="mb-1" />
+              <span class="block font-medium">Cash on Delivery</span>
+            </label>
+          </div>
+
+          <!-- Card mock inputs -->
+          <div id="payment-fields-card" class="space-y-3 text-xs bg-[#FAF9F5] p-4 rounded border border-[#EAE6DF]">
+            <div>
+              <label class="block text-gray-600 mb-1">Card Number</label>
+              <input type="text" placeholder="•••• •••• •••• 4242" value="4532 8920 1928 4242" class="w-full px-3 py-2 border border-[#EAE6DF] rounded bg-white" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-gray-600 mb-1">Expiry Date</label>
+                <input type="text" placeholder="MM/YY" value="12/28" class="w-full px-3 py-2 border border-[#EAE6DF] rounded bg-white" />
+              </div>
+              <div>
+                <label class="block text-gray-600 mb-1">CVV / CVC</label>
+                <input type="password" placeholder="•••" value="888" class="w-full px-3 py-2 border border-[#EAE6DF] rounded bg-white" />
+              </div>
+            </div>
+          </div>
+
+          <!-- UPI mock inputs -->
+          <div id="payment-fields-upi" class="hidden text-xs bg-[#FAF9F5] p-4 rounded border border-[#EAE6DF]">
+            <label class="block text-gray-600 mb-1">Enter your Virtual Payment Address (VPA / UPI ID)</label>
+            <input type="text" placeholder="username@upi" class="w-full px-3 py-2 border border-[#EAE6DF] rounded bg-white" />
+          </div>
+
+          <!-- COD mock message -->
+          <div id="payment-fields-cod" class="hidden text-xs bg-[#FAF9F5] p-4 rounded border border-[#EAE6DF] text-gray-700">
+            Pay with cash or contactless card when your package is delivered by the white-glove courier.
+          </div>
+        </div>
+
+        <!-- Step 4: Summary Breakdown -->
+        <div class="bg-[#FAF9F5] p-5 rounded border border-[#EAE6DF] space-y-2 text-xs">
+          <div id="checkout-items-list" class="space-y-1 mb-3"></div>
+          
+          <div class="flex justify-between text-gray-600">
+            <span>Subtotal</span>
+            <span id="checkout-subtotal">$0.00</span>
+          </div>
+          <div id="checkout-discount-row" class="hidden flex justify-between text-emerald-700">
+            <span>Privilege Discount</span>
+            <span id="checkout-discount">-$0.00</span>
+          </div>
+          <div class="flex justify-between text-gray-600">
+            <span>Shipping</span>
+            <span id="checkout-shipping">Complimentary</span>
+          </div>
+          <div class="flex justify-between text-gray-600">
+            <span>Sales Tax (8%)</span>
+            <span id="checkout-tax">$0.00</span>
+          </div>
+          <div class="flex justify-between text-base font-bold text-[#121212] pt-2 border-t border-[#EAE6DF]">
+            <span>Total Payable</span>
+            <span id="checkout-total">$0.00</span>
+          </div>
+        </div>
+
+        <button type="submit" id="checkout-submit-btn" class="w-full py-4 bg-[#121212] text-white text-xs font-semibold uppercase tracking-widest hover:bg-[#C5A880] transition-colors rounded shadow-lg">
+          Place Order
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== INVOICE & ORDER CONFIRMATION MODAL ==================== -->
+  <div id="invoice-modal" class="modal-backdrop fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="modal-content relative bg-white w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-lg shadow-2xl p-6 sm:p-10">
+      
+      <!-- Close button -->
+      <button data-invoice-close class="absolute top-5 right-5 text-gray-400 hover:text-black" aria-label="Close Invoice">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Printable Area -->
+      <div id="invoice-print-area">
+        <div class="border-b-2 border-black pb-6 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h1 class="font-serif text-3xl font-bold tracking-wider text-[#121212]">ÉLÉVATION ATELIER</h1>
+            <p class="text-xs uppercase tracking-widest text-[#C5A880] mt-0.5">Official Order Invoice & Receipt</p>
+          </div>
+          <div class="text-left sm:text-right text-xs">
+            <p class="font-bold text-sm text-black">Order ID: <span id="invoice-order-id">#EA-982143</span></p>
+            <p class="text-gray-500">Date: <span id="invoice-date">November 18, 2024</span></p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs mb-8">
+          <div>
+            <h5 class="font-semibold uppercase tracking-wider text-gray-400 mb-1">Billed & Shipped To:</h5>
+            <p id="invoice-cust-name" class="font-bold text-black text-sm"></p>
+            <p id="invoice-cust-email" class="text-gray-600"></p>
+            <p id="invoice-cust-address" class="text-gray-600"></p>
+          </div>
+          <div>
+            <h5 class="font-semibold uppercase tracking-wider text-gray-400 mb-1">Order Particulars:</h5>
+            <p><strong>Delivery:</strong> <span id="invoice-shipping-method"></span></p>
+            <p><strong>Payment Method:</strong> <span id="invoice-payment-method"></span></p>
+            <p><strong>Status:</strong> <span class="text-emerald-700 font-semibold">Payment Confirmed & In Preparation</span></p>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <table class="w-full text-left mb-6">
+          <thead>
+            <tr class="border-b border-black text-[11px] uppercase tracking-wider text-gray-500">
+              <th class="py-2">Item Description</th>
+              <th class="py-2">Variant</th>
+              <th class="py-2 text-center">Qty</th>
+              <th class="py-2 text-right">Unit Price</th>
+              <th class="py-2 text-right">Amount</th>
+            </tr>
+          </thead>
+          <tbody id="invoice-items-body"></tbody>
+        </table>
+
+        <!-- Totals summary -->
+        <div class="flex justify-end mb-8">
+          <div class="w-64 space-y-2 text-xs">
+            <div class="flex justify-between text-gray-600">
+              <span>Subtotal:</span>
+              <span id="inv-subtotal" class="font-medium">$0.00</span>
+            </div>
+            <div id="inv-discount-row" class="hidden flex justify-between text-emerald-700">
+              <span>VIP Privilege:</span>
+              <span id="inv-discount">-$0.00</span>
+            </div>
+            <div class="flex justify-between text-gray-600">
+              <span>Shipping:</span>
+              <span id="inv-shipping">Complimentary</span>
+            </div>
+            <div class="flex justify-between text-gray-600">
+              <span>Sales Tax:</span>
+              <span id="inv-tax">$0.00</span>
+            </div>
+            <div class="flex justify-between text-base font-bold text-black pt-2 border-t border-black">
+              <span>Grand Total:</span>
+              <span id="inv-grand-total">$0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 bg-[#FAF9F5] border border-[#EAE6DF] rounded text-center text-xs text-gray-500">
+          ✨ Thank you for choosing ÉLÉVATION ATELIER. Your pieces are being inspected and packaged in bespoke keepsake gift boxes. For concierge inquiries, contact <strong class="text-black">concierge@elevation-atelier.com</strong>.
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="mt-8 flex justify-end gap-3">
+        <button id="invoice-print-btn" class="px-5 py-2.5 bg-black text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#C5A880] transition-colors rounded flex items-center gap-2">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span>Print / Save as PDF</span>
+        </button>
+        <button data-invoice-close class="px-5 py-2.5 border border-black text-xs font-semibold uppercase tracking-wider hover:bg-gray-100 transition-colors rounded">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== MOBILE MENU DRAWER ==================== -->
+  <div id="mobile-menu-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex justify-start">
+    <div class="drawer-panel w-4/5 max-w-sm bg-white h-full flex flex-col p-6 shadow-2xl">
+      <div class="flex items-center justify-between pb-6 border-b border-[#EAE6DF]">
+        <h3 class="font-serif text-xl font-bold tracking-wider">ÉLÉVATION</h3>
+        <button id="mobile-menu-close" class="p-2 text-gray-500 hover:text-black">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <nav class="flex flex-col gap-4 py-8 text-sm uppercase tracking-widest font-semibold">
+        <a href="#catalog" onclick="document.querySelector('[data-category=all]').click(); document.getElementById('mobile-menu-close').click();" class="py-2 border-b border-gray-100">All Collections</a>
+        <a href="#catalog" onclick="document.querySelector('[data-category=women]').click(); document.getElementById('mobile-menu-close').click();" class="py-2 border-b border-gray-100">Women's Wear</a>
+        <a href="#catalog" onclick="document.querySelector('[data-category=men]').click(); document.getElementById('mobile-menu-close').click();" class="py-2 border-b border-gray-100">Men's Tailoring</a>
+        <a href="#catalog" onclick="document.querySelector('[data-category=outerwear]').click(); document.getElementById('mobile-menu-close').click();" class="py-2 border-b border-gray-100">Cashmere & Outerwear</a>
+        <a href="#catalog" onclick="document.querySelector('[data-category=accessories]').click(); document.getElementById('mobile-menu-close').click();" class="py-2 border-b border-gray-100">Artisanal Accessories</a>
+      </nav>
+
+      <div class="mt-auto pt-6 border-t border-[#EAE6DF] text-xs text-gray-500 space-y-2">
+        <p><strong>Concierge:</strong> concierge@elevation-atelier.com</p>
+        <p><strong>Tel:</strong> +1 (800) 845-8930</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION CONTAINER ==================== -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="js/store-config.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/quickview.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Initialize Lucide icons on page load
+    window.addEventListener('load', () => {
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>
